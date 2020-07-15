@@ -5,17 +5,7 @@ import numpy as np
 from .Layers.layers import PretrainedEncoder, DeeplabDecoder
 
 class ULab(nn.Module):
-    """ This is the base class for a multi task neural network for both road segmentation
-        and traffic object detection. It is an encoder-decoder deep convolutional
-        neural network.
-
-        The encoder first extracts feature maps that are then sepearately passed on to a
-        decoder for segmentation and object detection. All operations are implemented
-        independent of input resolution. 
-
-        The archticture is modular which allows for quick alterations to both the encoder 
-        as well as the decoder modulse.
-
+    """ This is the base class for an encoder decoder network for (road scene) segmentation
 
         Args:
             phase (string):                         either "test" or "train"
