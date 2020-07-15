@@ -19,7 +19,7 @@ Accuracy is measured by mean intersection over union on the Cityscapes validatio
 
 ## Installation and Prerequisites
 
-The code was tested with Anaconda and Python 3.8. You should have a CUDA capable GPU. After setting up the conda environment:
+The code was tested with Anaconda and Python 3.8. The code runs fine on CPU, but you should have a CUDA capable GPU for a better experience. After setting up the conda environment:
 
 1. Clone this repository
 ```

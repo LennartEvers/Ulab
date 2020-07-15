@@ -140,11 +140,16 @@ class predictor(object):
         CITYSCAPES_MEAN = [0.28689554, 0.32513303, 0.28389177]
         CITYSCAPES_STD = [0.18696375, 0.19017339, 0.18720214]
         self.transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(CITYSCAPES_MEAN, CITYSCAPES_STD)])
+        self.CUDA = torch.cuda.is_available()
         net_cfg = ULabConfig(cfg)
         net = build_ULab(net_cfg)
         net = nn.DataParallel(net)
-        net.load_state_dict(torch.load('Weights/' + cfg['encoder'] + '.pth'))
-        if torch.cuda.is_available():
+        if self.CUDA:
+            net.load_state_dict(torch.load('Weights/' + cfg['encoder'] + '.pth'))
+        else:
+            net.load_state_dict(torch.load('Weights/' + cfg['encoder'] + '.pth', map_location=torch.device('cpu')))
+        self.CUDA = torch.cuda.is_available()
+        if self.CUDA:
             net.cuda()
         self.net = net.module
         self.net.eval()
@@ -152,7 +157,9 @@ class predictor(object):
     def __call__(self, image):
         with torch.no_grad():
             x = self.transform(image)
-            x = x.unsqueeze(0).cuda(non_blocking=True)
+            x = x.unsqueeze(0)
+            if self.CUDA:
+                x = x.cuda()
             out = self.net(x)
             mask = torch.argmax(out[0].float(), dim = 0).cpu().numpy()
         return mask
@@ -184,11 +191,11 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='ULab for semantic segmentation')
-    parser.add_argument('--config', default='ULab_wide_resnet50',
+    parser.add_argument('--config', default='ULab_resnet34',
                         type=str, help='Configuration to use', choices=config.keys())
     parser.add_argument('--video_path', default='./Videos/Test.mp4', type=str,
                         help='path to video file to predict on')
-    parser.add_argument('--visualize_preds', default=False, type=bool,
+    parser.add_argument('--visualize_preds', default=True, type=bool,
                         help='output prediction masks or only input video frames')
     args = parser.parse_args()
     main(args)
