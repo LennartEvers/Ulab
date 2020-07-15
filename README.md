@@ -45,5 +45,5 @@ This visualizes predictions of the resnet34 based model on a test video (Stuttga
 
 ## License
 
-This project is licensed under GNU general public license - see the [LICENSE.md](LICENSE.md) file for details
+
 
