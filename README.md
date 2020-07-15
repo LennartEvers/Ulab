@@ -40,7 +40,7 @@ Run
 ```
 python demo.py --config ULab_resnet34 --visualize_preds True
 ```
-This visualizes predictions of the resnet34 based model on a test video (Stuttgart_02) from the cityscapes benchmark dataset. Note that the visualization massively slows down frame rate. For other configurations have a look into Config/config.py
+This visualizes predictions of the resnet34 based model on a test video (Stuttgart_02) from the cityscapes benchmark dataset. Note that the visualization massively slows down frame rate. For other configurations have a look into Config/config.py. The weights for the other configs can be downloaded [here](https://drive.google.com/file/d/1jzjwiYnUNeAjGskwTyQP4nKmQcI7XqPR/view?usp=sharing).
 
 
 ## License
