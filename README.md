@@ -1,6 +1,6 @@
 # ULab - Simple and light-weight Semantic Segmentation CNN
 
-This is a simple Encoder-Decoder network for semantic segmentation implemented in PyTorch (1.5.0). It differs to most other implementations by using the PyTorch model zoo classifiers as encoders. The decoder can be chosen from a variety of models, with the decoder being similar to deeplab with an extra skip connection. With smaller encoders such as resnet18, resnet34 or mobilenet the network is pretty lightweight and achieves inference speed greater than 20fps on the full resolution cityscapes images. 
+This is a simple Encoder-Decoder network for semantic segmentation implemented in PyTorch (1.5.0). It differs to most other implementations by using the PyTorch model zoo classifiers as encoders. The encoder can be chosen from a variety of models, with the decoder being similar to deeplab with an extra skip connection. With smaller encoders such as resnet18, resnet34 or mobilenet the network is pretty lightweight and achieves inference speed greater than 20fps on the full resolution cityscapes images. 
 
 ## Performance
 
