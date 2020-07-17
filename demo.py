@@ -182,7 +182,7 @@ def main(args):
         # network needs dimensions to be divisible by 32
         image = cv2.resize(image, (h//32*32, w//32*32))
         prediction = net(image)
-        if args.visualize_preds:
+        if args.visualize:
             image = visualizer(prediction, image)
         cv2.imshow('test', image)
         key = cv2.waitKey(1)
@@ -195,8 +195,8 @@ if __name__ == "__main__":
                         type=str, help='Configuration to use', choices=config.keys())
     parser.add_argument('--video_path', default='./Videos/Test.mp4', type=str,
                         help='path to video file to predict on')
-    parser.add_argument('--visualize_preds', default=True, type=bool,
-                        help='output prediction masks or only input video frames')
+    parser.add_argument('--no-vis', dest='visualize', action='store_false',
+                        help='supply this argument if you do not want to visualize the predicted masks')
     parser.add_argument('--downsample_factor', default=2, type=int,
                         help='factor for downsampling input images. Here 2 means half sized, 4 quarter sized and so on.')
     args = parser.parse_args()
