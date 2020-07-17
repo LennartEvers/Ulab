@@ -91,9 +91,9 @@ config = {
     'ULab_densenet': {
         'classes' : [7, 8, 11, 12, 13, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 31, 32, 33],
         'input_size' : (2048,1024),
-        'name' : 'ULab_resnext50',
+        'name' : 'ULab_densenet',
 
-        'encoder' : 'resnext50',
+        'encoder' : 'densenet121',
         'decoder_channels' : [128, 128],
         'decoder' : 'ULab',
         'aspp_channels' : [64, 128],

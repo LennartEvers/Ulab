@@ -24,13 +24,11 @@ The code was tested with Anaconda and Python 3.8. The code runs fine on CPU, but
 1. Clone this repository
 ```
 git clone https://github.com/LennartEvers/Ulab.git
-```
-
-```
 cd Ulab
 ```
 2. Install dependencies: For PyTorch, see [pytorch.org](https://www.pytorch.org) for more details. 
-install opencv (for the visualization)
+
+Install opencv (for the visualization):
 ```
 pip install opencv-python
 ```
