@@ -169,7 +169,7 @@ def main(args):
     cfg = config[args.config]
     net = predictor(cfg)
     visualizer = Visualizer(cfg['classes'])
-    input_scale = 2
+    input_scale = args.downsample_factor
     video = cv2.VideoCapture(args.video_path)
     print('Starting prediction on {} with ULab config {}.'.format(args.video_path, args.config))
     while True:
@@ -197,5 +197,7 @@ if __name__ == "__main__":
                         help='path to video file to predict on')
     parser.add_argument('--visualize_preds', default=True, type=bool,
                         help='output prediction masks or only input video frames')
+    parser.add_argument('--downsample_factor', default=2, type=int,
+                        help='factor for downsampling input images. Here 2 means half sized, 4 quarter sized and so on.')
     args = parser.parse_args()
     main(args)
